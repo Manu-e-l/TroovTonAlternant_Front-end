@@ -44,41 +44,29 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
         baseURL: "http://localhost:8080/"
     },
     auth: {
-    //     // redirect: {
-    //     //     login: "/login",
-    //     //     logout: "/login",
-    //     //     callback: "/login",
-    //     //     home: false
-    //     // },
+        localStorage: false,
+        cookie: {
+            prefix: "auth.",
+            options: {
+                path: "/",
+                maxAge: 259200
+            }
+        },
         strategies: {
-            local: false,
-            cookie: {
-                token: {
-                    property: "data.acces_token_cookie",
-                    required: true,
-                    type: "Bearer",
-                    httpOnly: true
-                },
-    //             user: {
-    //                 property: "data"
-    //             },
-    //             endpoints: {
-    //                 login: {
-    //                     url: "/users/login",
-    //                     method: "post"
-    //                 },
-    //                 logout: { url: "/users/logout", method: "delete" },
-    //                 user: { url: "/users/", method: "get" }
-    //             }
-    //         }
-    //     }
+            local: {
+                endpoints: {
+                    login: { url: "/users/login", method: "post", propertyName: "access_token" },
+                    user: { url: "/", method: "get", propertyName: "content" },
+                    logout: false
+                }
+            }
+        }
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
     }
-}
+};

@@ -7,13 +7,13 @@
             Connexion
           </h2>
 
-          <b-notification v-if="error" type="is-warning">
-            {{ error }}
+          <b-notification v-if="err" type="is-warning">
+            {{ err }}
           </b-notification>
 
           <form method="post" @submit.prevent="login">
-            <b-field label="Username" label-for="username">
-              <b-input id="username" v-model="username" />
+            <b-field label="Email" label-for="email">
+              <b-input id="email" v-model="email" />
             </b-field>
             <b-field label="Password" label-for="password">
               <b-input
@@ -48,9 +48,9 @@
 export default {
     data () {
         return {
-            username: "",
+            email: "",
             password: "",
-            error: ""
+            err: ""
         };
     },
     methods: {
@@ -58,14 +58,14 @@ export default {
             try {
                 await this.$auth.loginWith("local", {
                     data: {
-                        username: this.username,
+                        email: this.email,
                         password: this.password
                     }
                 });
 
                 this.$router.push("/inspire");
             } catch (e) {
-                this.error = e.response.data.message;
+                this.err = e.response.data.message;
             }
         }
     }
