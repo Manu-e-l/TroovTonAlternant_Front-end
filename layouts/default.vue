@@ -1,11 +1,12 @@
 <template>
   <div>
     <nav
-      class="navbar header has-shadow is-primary"
+      class="navbar header has-shadow is-primary transparent"
+      :transparent="true"
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
+      <div class="navbar-brand ">
         <a
           class="navbar-item"
           href="/"
@@ -59,13 +60,13 @@ export default {
         return {
             items: [
                 {
-                    title: "Home",
+                    title: "Présentation",
                     icon: "home",
                     to: { name: "index" }
                 },
                 {
-                    title: "Inspire",
-                    icon: "lightbulb",
+                    title: "Connexion",
+                    icon: "login",
                     to: { name: "inspire" }
                 }
             ]

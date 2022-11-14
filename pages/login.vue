@@ -32,9 +32,9 @@
 
           <div class="has-text-centered" style="margin-top: 20px">
             <p>
-              Avez-vous un compte ?
+              Vous n'avez-vous pas encore de compte ?
               <nuxt-link to="/register">
-                S'inscrire
+                Inscrivez-vous
               </nuxt-link>
             </p>
           </div>
